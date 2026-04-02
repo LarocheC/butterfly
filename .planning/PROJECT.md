@@ -20,9 +20,14 @@ A single `uv pip install .` (or `uv pip install -e .`) that just works — with 
 
 ### Active
 
-- [ ] UV-compatible editable installation (uv pip install -e .)
-- [ ] Fix extension loading for reliable imports (PathFinder replacement)
-- [ ] Remove or isolate legacy code that blocks clean install
+(All v1 requirements complete)
+
+### Validated (Phase 2)
+
+- ✓ UV-compatible editable installation (uv pip install -e .) — Phase 2
+- ✓ Glob-based extension loading replacing PathFinder — Phase 2
+- ✓ RegisterOperators migrated to TORCH_LIBRARY_FRAGMENT — Phase 2
+- ✓ CUDA version check downgraded from RuntimeError to warning — Phase 2
 
 ### Validated (Phase 1)
 
@@ -70,4 +75,4 @@ A single `uv pip install .` (or `uv pip install -e .`) that just works — with 
 | Focus on torch_butterfly/ only | Legacy butterfly/ package is being replaced | — Pending |
 
 ---
-*Last updated: 2026-04-02 after Phase 1 completion*
+*Last updated: 2026-04-02 after Phase 2 completion — all phases complete*
