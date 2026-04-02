@@ -20,13 +20,19 @@ A single `uv pip install .` (or `uv pip install -e .`) that just works — with 
 
 ### Active
 
-- [ ] Replace setup.py with pyproject.toml-based build
-- [ ] UV-compatible installation (uv pip install . / uv pip install -e .)
-- [ ] Python 3.10+ compatibility
-- [ ] PyTorch 2.x compatibility
-- [ ] Maintain CUDA extension compilation (FORCE_CUDA/FORCE_CPU env vars)
-- [ ] Simplify dependency declaration (remove stale/unused deps)
+- [ ] UV-compatible editable installation (uv pip install -e .)
+- [ ] Fix extension loading for reliable imports (PathFinder replacement)
 - [ ] Remove or isolate legacy code that blocks clean install
+
+### Validated (Phase 1)
+
+- ✓ pyproject.toml-based build with PEP 621 metadata — Phase 1
+- ✓ UV-compatible non-editable installation (uv pip install .) — Phase 1
+- ✓ pip install . works — Phase 1
+- ✓ Python 3.10+ enforced in metadata — Phase 1
+- ✓ PyTorch 2.x compatibility (torch>=2.0 as build+runtime dep) — Phase 1
+- ✓ CUDA extension compilation with FORCE_CUDA/FORCE_CPU/TORCH_CUDA_ARCH_LIST — Phase 1
+- ✓ Simplified dependencies (torch + numpy only, stale requirements.txt deleted) — Phase 1
 
 ### Out of Scope
 
@@ -64,4 +70,4 @@ A single `uv pip install .` (or `uv pip install -e .`) that just works — with 
 | Focus on torch_butterfly/ only | Legacy butterfly/ package is being replaced | — Pending |
 
 ---
-*Last updated: 2026-04-02 after initialization*
+*Last updated: 2026-04-02 after Phase 1 completion*
