@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=77", "torch>=2.0", "ninja", "wheel"]
+requires = ["setuptools>=64", "torch>=2.0", "ninja", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -7,7 +7,7 @@ name = "torch-butterfly"
 version = "0.1.0"
 description = "Butterfly matrix multiplication in PyTorch"
 readme = "README.md"
-license = "Apache-2.0"
+license = {text = "Apache-2.0"}
 requires-python = ">=3.10"
 authors = [
     { name = "Tri Dao", email = "trid@stanford.edu" },
