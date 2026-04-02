@@ -38,19 +38,17 @@ def get_extensions():
 
         extra_compile_args["nvcc"] = nvcc_flags
 
-    extensions_dir = Path(__file__).resolve().parent / "csrc"
-    # setuptools requires relative paths from setup.py directory
-    setup_dir = Path(__file__).resolve().parent
+    extensions_dir = Path("csrc")
     extensions = []
     for main in extensions_dir.glob("*.cpp"):
         name = main.stem
-        sources = [str(main.relative_to(setup_dir))]
+        sources = [str(main)]
         cpu_path = extensions_dir / "cpu" / f"{name}_cpu.cpp"
         if cpu_path.exists():
-            sources.append(str(cpu_path.relative_to(setup_dir)))
+            sources.append(str(cpu_path))
         cuda_path = extensions_dir / "cuda" / f"{name}_cuda.cu"
         if WITH_CUDA and cuda_path.exists():
-            sources.append(str(cuda_path.relative_to(setup_dir)))
+            sources.append(str(cuda_path))
         extensions.append(
             Extension(
                 f"torch_butterfly._{name}",
