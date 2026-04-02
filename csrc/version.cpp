@@ -19,6 +19,6 @@ int64_t cuda_version() {
 #endif
 }
 
-TORCH_LIBRARY(torch_butterfly, m) {
+TORCH_LIBRARY_FRAGMENT(torch_butterfly, m) {
     m.def("cuda_version", cuda_version);
 }
