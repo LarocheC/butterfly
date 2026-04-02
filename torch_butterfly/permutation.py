@@ -2,7 +2,6 @@ import math
 from typing import List, Tuple, Union
 
 import numpy as np
-import scipy.linalg
 
 import torch
 from torch import nn
@@ -273,6 +272,7 @@ def modular_balanced_to_butterfly_factor(L: np.ndarray) -> List[np.ndarray]:
     """Returns a sequence of butterfly factors that, when multiplied together, create L.
     Assumptions: L is a modular-balanced permutation matrix.
     Directly follows the proof of Lemma G.1.
+    Requires scipy (lazy import).
     Optimized for readability, not efficiency.
     Parameters:
         L: a modular-balanced permutation matrix, stored in the right-multiplication format.
@@ -285,6 +285,7 @@ def modular_balanced_to_butterfly_factor(L: np.ndarray) -> List[np.ndarray]:
     if isinstance(L, list) or len(L.shape) == 1:
         L = perm_vec_to_mat(L)
     n = L.shape[0]
+    import scipy.linalg
     if n == 2:
         return [L.copy()]  # L is its own inverse, and is already a butterfly.
     nh = n//2
