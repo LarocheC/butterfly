@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: planning
-stopped_at: Phase 1 context gathered
-last_updated: "2026-04-02T12:20:16.411Z"
-last_activity: 2026-04-02 -- Roadmap created
+status: verifying
+stopped_at: Completed 01-01-PLAN.md
+last_updated: "2026-04-02T12:37:22.129Z"
+last_activity: 2026-04-02
 progress:
   total_phases: 2
-  completed_phases: 0
-  total_plans: 0
-  completed_plans: 0
+  completed_phases: 1
+  total_plans: 1
+  completed_plans: 1
   percent: 0
 ---
 
@@ -27,8 +27,8 @@ See: .planning/PROJECT.md (updated 2026-04-02)
 
 Phase: 1 of 2 (Build System Foundation)
 Plan: 0 of 0 in current phase
-Status: Ready to plan
-Last activity: 2026-04-02 -- Roadmap created
+Status: Phase complete — ready for verification
+Last activity: 2026-04-02
 
 Progress: [░░░░░░░░░░] 0%
 
@@ -52,6 +52,7 @@ Progress: [░░░░░░░░░░] 0%
 - Trend: -
 
 *Updated after each plan completion*
+| Phase 01 P01 | 2min | 4 tasks | 4 files |
 
 ## Accumulated Context
 
@@ -62,6 +63,9 @@ Recent decisions affecting current work:
 
 - [Roadmap]: Two-phase structure -- Phase 1 covers all build-system and CUDA work, Phase 2 covers extension loading and editable installs
 - [Roadmap]: Research Phase 3 (docs/DX) has no v1 requirements, deferred
+- [Phase 01]: CUDA arch default 7.0 8.0 9.0+PTX with TORCH_CUDA_ARCH_LIST env var override
+- [Phase 01]: torch>=2.0 in build-system.requires for PEP 517 build isolation (Strategy A)
+- [Phase 01]: Kept no_python_abi_suffix=True pending Phase 2 __init__.py rework
 
 ### Pending Todos
 
@@ -73,6 +77,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-04-02T12:20:16.409Z
-Stopped at: Phase 1 context gathered
-Resume file: .planning/phases/01-build-system-foundation/01-CONTEXT.md
+Last session: 2026-04-02T12:37:22.126Z
+Stopped at: Completed 01-01-PLAN.md
+Resume file: None

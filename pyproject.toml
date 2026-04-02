@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=77", "torch>=2.0", "ninja", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "torch-butterfly"
+version = "0.1.0"
+description = "Butterfly matrix multiplication in PyTorch"
+readme = "README.md"
+license = "Apache-2.0"
+requires-python = ">=3.10"
+authors = [
+    { name = "Tri Dao", email = "trid@stanford.edu" },
+]
+keywords = ["pytorch", "butterfly", "fft", "structured-matrices", "kaleidoscope"]
+dependencies = [
+    "torch>=2.0",
+    "numpy",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "flake8",
+]
+test = [
+    "pytest",
+]
+
+[project.urls]
+Homepage = "https://github.com/hazyresearch/learning-circuits"
+
+[tool.setuptools.packages.find]
+include = ["torch_butterfly*"]

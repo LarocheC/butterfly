@@ -12,7 +12,7 @@ Modernize torch_butterfly from a broken setup.py-only build to a pyproject.toml-
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Build System Foundation** - pyproject.toml, PEP 621 metadata, CUDA arch fix, and working non-editable install
+- [x] **Phase 1: Build System Foundation** - pyproject.toml, PEP 621 metadata, CUDA arch fix, and working non-editable install (completed 2026-04-02)
 - [ ] **Phase 2: Extension Loading and Editable Installs** - Fix runtime .so discovery, modernize C++ registration, enable editable installs
 
 ## Phase Details
@@ -27,12 +27,11 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. After install, `import torch_butterfly` works and CUDA extensions load on a CUDA-capable machine
   4. The build succeeds without conda -- only pip/uv and a system CUDA toolkit are needed
   5. Setting `FORCE_CUDA=1` or `FORCE_CPU=1` controls whether CUDA extensions are compiled
-**Plans**: 3 plans
+**Plans**: TBD
 
 Plans:
-- [ ] 01-01-PLAN.md — Create pyproject.toml with build-system and PEP 621 metadata, MANIFEST.in, delete requirements.txt
-- [ ] 01-02-PLAN.md — Rewrite setup.py to thin shim with CUDA architecture fix
-- [ ] 01-03-PLAN.md — End-to-end install verification (uv pip install + pip install)
+- [x] 01-01: TBD
+- [ ] 01-02: TBD
 
 ### Phase 2: Extension Loading and Editable Installs
 **Goal**: Editable installs work reliably and the C++ extension loading mechanism is robust across install modes
@@ -54,5 +53,5 @@ Phases execute in numeric order: 1 -> 2
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Build System Foundation | 0/3 | Not started | - |
+| 1. Build System Foundation | 1/1 | Complete   | 2026-04-02 |
 | 2. Extension Loading and Editable Installs | 0/0 | Not started | - |

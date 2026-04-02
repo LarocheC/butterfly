@@ -1,87 +1,71 @@
-# Adapted from https://github.com/rusty1s/pytorch_scatter/blob/master/setup.py
+# Thin build shim -- all metadata lives in pyproject.toml.
+# This file exists only because torch.utils.cpp_extension.BuildExtension
+# is a setuptools build_ext subclass that cannot be declared in TOML.
+#
+# Adapted from https://github.com/pytorch/extension-cpp
+
 import os
 from pathlib import Path
-from setuptools import setup, find_packages
+
+from setuptools import setup
 
 import torch
-from torch.utils.cpp_extension import BuildExtension
-from torch.utils.cpp_extension import CppExtension, CUDAExtension, CUDA_HOME
-
-WITH_CUDA = torch.cuda.is_available() and CUDA_HOME is not None
-if os.getenv('FORCE_CUDA', '0') == '1':
-    WITH_CUDA = True
-if os.getenv('FORCE_CPU', '0') == '1':
-    WITH_CUDA = False
-
-BUILD_DOCS = os.getenv('BUILD_DOCS', '0') == '1'
+from torch.utils.cpp_extension import BuildExtension, CppExtension, CUDAExtension, CUDA_HOME
 
 
 def get_extensions():
-    Extension = CppExtension
-    define_macros = []
-    extra_compile_args = {'cxx': []}
+    WITH_CUDA = torch.cuda.is_available() and CUDA_HOME is not None
+    if os.getenv("FORCE_CUDA", "0") == "1":
+        WITH_CUDA = True
+    if os.getenv("FORCE_CPU", "0") == "1":
+        WITH_CUDA = False
+    if os.getenv("BUILD_DOCS", "0") == "1":
+        return []
+
+    Extension = CUDAExtension if WITH_CUDA else CppExtension
+    define_macros = [("WITH_CUDA", None)] if WITH_CUDA else []
+    extra_compile_args = {"cxx": ["-O3"]}
 
     if WITH_CUDA:
-        Extension = CUDAExtension
-        define_macros += [('WITH_CUDA', None)]
-        nvcc_flags = os.getenv('NVCC_FLAGS', '')
-        nvcc_flags = [] if nvcc_flags == '' else nvcc_flags.split(' ')
-        nvcc_flags += ['-arch=sm_35']
-        nvcc_flags += ['--expt-extended-lambda', '-lineinfo']
-        extra_compile_args['nvcc'] = nvcc_flags
+        nvcc_flags = os.getenv("NVCC_FLAGS", "").split() if os.getenv("NVCC_FLAGS") else []
+        nvcc_flags += ["--expt-extended-lambda", "-lineinfo"]
 
-    extensions_dir = Path(__file__).absolute().parent / 'csrc'
+        # CUDA architecture targeting:
+        # - Respect TORCH_CUDA_ARCH_LIST env var if set (standard PyTorch convention)
+        # - Otherwise default to Volta (7.0), Ampere (8.0), Hopper (9.0) with PTX forward compat
+        if not os.getenv("TORCH_CUDA_ARCH_LIST"):
+            os.environ["TORCH_CUDA_ARCH_LIST"] = "7.0 8.0 9.0+PTX"
+
+        extra_compile_args["nvcc"] = nvcc_flags
+
+    extensions_dir = Path(__file__).absolute().parent / "csrc"
     extensions = []
-    for main in extensions_dir.glob('*.cpp'):
+    for main in extensions_dir.glob("*.cpp"):
         name = main.stem
         sources = [str(main)]
-        path = extensions_dir / 'cpu' / f'{name}_cpu.cpp'
-        if path.exists():
-            sources.append(str(path))
-        path = extensions_dir / 'cuda' / f'{name}_cuda.cu'
-        if WITH_CUDA and path.exists():
-            sources.append(str(path))
-        extension = Extension(
-            'torch_butterfly._' + name,
-            sources,
-            include_dirs=[extensions_dir],
-            define_macros=define_macros,
-            extra_compile_args=extra_compile_args,
+        cpu_path = extensions_dir / "cpu" / f"{name}_cpu.cpp"
+        if cpu_path.exists():
+            sources.append(str(cpu_path))
+        cuda_path = extensions_dir / "cuda" / f"{name}_cuda.cu"
+        if WITH_CUDA and cuda_path.exists():
+            sources.append(str(cuda_path))
+        extensions.append(
+            Extension(
+                f"torch_butterfly._{name}",
+                sources,
+                include_dirs=[str(extensions_dir)],
+                define_macros=define_macros,
+                extra_compile_args=extra_compile_args,
+            )
         )
-        extensions.append(extension)
-
     return extensions
 
 
-install_requires = []
-# setup_requires = ['pytest-runner']
-setup_requires = []
-# tests_require = ['pytest', 'pytest-cov']
-tests_require = []
-
 setup(
-    name='torch_butterfly',
-    version='0.0.0',
-    author='Tri Dao',
-    author_email='trid@stanford.edu',
-    url='https://github.com/hazyresearch/learning-circuits',
-    description=('Butterfly matrix multiplication in PyTorch'),
-    keywords=[
-        'pytorch',
-        'butterfly',
-        'kaleidoscope',
-        'fft',
-    ],
-    license='Apache',
-    python_requires='>=3.6',
-    install_requires=install_requires,
-    setup_requires=setup_requires,
-    tests_require=tests_require,
-    ext_modules=get_extensions() if not BUILD_DOCS else [],
+    ext_modules=get_extensions(),
     cmdclass={
-        'build_ext':
-        BuildExtension.with_options(no_python_abi_suffix=True, use_ninja=True)
+        "build_ext": BuildExtension.with_options(
+            no_python_abi_suffix=True, use_ninja=True
+        )
     },
-    # packages=find_packages(),
-    packages=['torch_butterfly'],
 )

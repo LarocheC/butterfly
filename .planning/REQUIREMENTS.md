@@ -7,19 +7,19 @@
 
 ### Build System
 
-- [ ] **BUILD-01**: Package uses pyproject.toml with `[build-system]` declaring torch, setuptools, ninja, wheel as build dependencies
-- [ ] **BUILD-02**: Package metadata follows PEP 621 (`[project]` table with name, version, description, python-requires, etc.)
-- [ ] **BUILD-03**: Package discovery excludes legacy `butterfly/` directory, only installs `torch_butterfly/`
-- [ ] **BUILD-04**: MANIFEST.in includes `csrc/` source files so sdist contains C++/CUDA sources
-- [ ] **BUILD-05**: Optional dependency groups defined for dev and test extras (`[project.optional-dependencies]`)
-- [ ] **BUILD-06**: setup.py reduced to thin shim (only ext_modules and BuildExtension cmdclass)
+- [x] **BUILD-01**: Package uses pyproject.toml with `[build-system]` declaring torch, setuptools, ninja, wheel as build dependencies
+- [x] **BUILD-02**: Package metadata follows PEP 621 (`[project]` table with name, version, description, python-requires, etc.)
+- [x] **BUILD-03**: Package discovery excludes legacy `butterfly/` directory, only installs `torch_butterfly/`
+- [x] **BUILD-04**: MANIFEST.in includes `csrc/` source files so sdist contains C++/CUDA sources
+- [x] **BUILD-05**: Optional dependency groups defined for dev and test extras (`[project.optional-dependencies]`)
+- [x] **BUILD-06**: setup.py reduced to thin shim (only ext_modules and BuildExtension cmdclass)
 
 ### CUDA Compatibility
 
-- [ ] **CUDA-01**: Hardcoded sm_35 CUDA architecture flag removed (broken on CUDA 12+)
-- [ ] **CUDA-02**: Build auto-detects CUDA availability from torch and CUDA_HOME (existing behavior preserved and improved)
-- [ ] **CUDA-03**: TORCH_CUDA_ARCH_LIST env var supported for user override of CUDA architecture targets
-- [ ] **CUDA-04**: FORCE_CUDA and FORCE_CPU env vars preserved as manual overrides
+- [x] **CUDA-01**: Hardcoded sm_35 CUDA architecture flag removed (broken on CUDA 12+)
+- [x] **CUDA-02**: Build auto-detects CUDA availability from torch and CUDA_HOME (existing behavior preserved and improved)
+- [x] **CUDA-03**: TORCH_CUDA_ARCH_LIST env var supported for user override of CUDA architecture targets
+- [x] **CUDA-04**: FORCE_CUDA and FORCE_CPU env vars preserved as manual overrides
 
 ### Extension Loading
 
@@ -32,9 +32,9 @@
 - [ ] **INST-01**: `uv pip install .` works from source checkout (non-editable)
 - [ ] **INST-02**: `pip install .` works from source checkout (non-editable)
 - [ ] **INST-03**: `uv pip install -e .` works for development (editable)
-- [ ] **INST-04**: Install works without conda — pure pip/uv workflow
-- [ ] **INST-05**: Python >=3.10, <4 enforced in metadata
-- [ ] **INST-06**: PyTorch >=2.0 declared as runtime dependency
+- [x] **INST-04**: Install works without conda — pure pip/uv workflow
+- [x] **INST-05**: Python >=3.10, <4 enforced in metadata
+- [x] **INST-06**: PyTorch >=2.0 declared as runtime dependency
 
 ## v2 Requirements
 
@@ -65,25 +65,25 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| BUILD-01 | Phase 1 | Pending |
-| BUILD-02 | Phase 1 | Pending |
-| BUILD-03 | Phase 1 | Pending |
-| BUILD-04 | Phase 1 | Pending |
-| BUILD-05 | Phase 1 | Pending |
-| BUILD-06 | Phase 1 | Pending |
-| CUDA-01 | Phase 1 | Pending |
-| CUDA-02 | Phase 1 | Pending |
-| CUDA-03 | Phase 1 | Pending |
-| CUDA-04 | Phase 1 | Pending |
+| BUILD-01 | Phase 1 | Complete |
+| BUILD-02 | Phase 1 | Complete |
+| BUILD-03 | Phase 1 | Complete |
+| BUILD-04 | Phase 1 | Complete |
+| BUILD-05 | Phase 1 | Complete |
+| BUILD-06 | Phase 1 | Complete |
+| CUDA-01 | Phase 1 | Complete |
+| CUDA-02 | Phase 1 | Complete |
+| CUDA-03 | Phase 1 | Complete |
+| CUDA-04 | Phase 1 | Complete |
 | EXT-01 | Phase 2 | Pending |
 | EXT-02 | Phase 2 | Pending |
 | EXT-03 | Phase 2 | Pending |
 | INST-01 | Phase 1 | Pending |
 | INST-02 | Phase 1 | Pending |
 | INST-03 | Phase 2 | Pending |
-| INST-04 | Phase 1 | Pending |
-| INST-05 | Phase 1 | Pending |
-| INST-06 | Phase 1 | Pending |
+| INST-04 | Phase 1 | Complete |
+| INST-05 | Phase 1 | Complete |
+| INST-06 | Phase 1 | Complete |
 
 **Coverage:**
 - v1 requirements: 19 total
