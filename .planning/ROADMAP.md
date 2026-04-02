@@ -27,11 +27,12 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. After install, `import torch_butterfly` works and CUDA extensions load on a CUDA-capable machine
   4. The build succeeds without conda -- only pip/uv and a system CUDA toolkit are needed
   5. Setting `FORCE_CUDA=1` or `FORCE_CPU=1` controls whether CUDA extensions are compiled
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-- [ ] 01-01: TBD
-- [ ] 01-02: TBD
+- [ ] 01-01-PLAN.md — Create pyproject.toml with build-system and PEP 621 metadata, MANIFEST.in, delete requirements.txt
+- [ ] 01-02-PLAN.md — Rewrite setup.py to thin shim with CUDA architecture fix
+- [ ] 01-03-PLAN.md — End-to-end install verification (uv pip install + pip install)
 
 ### Phase 2: Extension Loading and Editable Installs
 **Goal**: Editable installs work reliably and the C++ extension loading mechanism is robust across install modes
@@ -53,5 +54,5 @@ Phases execute in numeric order: 1 -> 2
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Build System Foundation | 0/0 | Not started | - |
+| 1. Build System Foundation | 0/3 | Not started | - |
 | 2. Extension Loading and Editable Installs | 0/0 | Not started | - |
