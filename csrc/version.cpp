@@ -19,5 +19,6 @@ int64_t cuda_version() {
 #endif
 }
 
-static auto registry = torch::RegisterOperators().op(
-    "torch_butterfly::cuda_version", &cuda_version);
+TORCH_LIBRARY(torch_butterfly, m) {
+    m.def("cuda_version", cuda_version);
+}

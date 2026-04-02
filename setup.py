@@ -65,7 +65,7 @@ setup(
     ext_modules=get_extensions(),
     cmdclass={
         "build_ext": BuildExtension.with_options(
-            no_python_abi_suffix=True, use_ninja=True
+            use_ninja=True
         )
     },
 )
