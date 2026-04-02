@@ -43,7 +43,7 @@ Plans:
 **Plans**: 1 plan
 
 Plans:
-- [ ] 02-01-PLAN.md — Fix extension loading, modernize version.cpp, soften CUDA check
+- [x] 02-01-PLAN.md — Fix extension loading, modernize version.cpp, soften CUDA check
 
 ## Progress
 

@@ -23,15 +23,15 @@
 
 ### Extension Loading
 
-- [ ] **EXT-01**: PathFinder-based extension loading in `__init__.py` replaced with `__file__`-relative .so discovery
-- [ ] **EXT-02**: Editable installs (`uv pip install -e .`) load extensions correctly
-- [ ] **EXT-03**: Deprecated RegisterOperators API in `csrc/version.cpp` migrated to TORCH_LIBRARY macro
+- [x] **EXT-01**: PathFinder-based extension loading in `__init__.py` replaced with `__file__`-relative .so discovery
+- [x] **EXT-02**: Editable installs (`uv pip install -e .`) load extensions correctly
+- [x] **EXT-03**: Deprecated RegisterOperators API in `csrc/version.cpp` migrated to TORCH_LIBRARY macro
 
 ### Install Experience
 
 - [ ] **INST-01**: `uv pip install .` works from source checkout (non-editable)
 - [ ] **INST-02**: `pip install .` works from source checkout (non-editable)
-- [ ] **INST-03**: `uv pip install -e .` works for development (editable)
+- [x] **INST-03**: `uv pip install -e .` works for development (editable)
 - [x] **INST-04**: Install works without conda — pure pip/uv workflow
 - [x] **INST-05**: Python >=3.10, <4 enforced in metadata
 - [x] **INST-06**: PyTorch >=2.0 declared as runtime dependency
@@ -75,12 +75,12 @@
 | CUDA-02 | Phase 1 | Complete |
 | CUDA-03 | Phase 1 | Complete |
 | CUDA-04 | Phase 1 | Complete |
-| EXT-01 | Phase 2 | Pending |
-| EXT-02 | Phase 2 | Pending |
-| EXT-03 | Phase 2 | Pending |
+| EXT-01 | Phase 2 | Complete |
+| EXT-02 | Phase 2 | Complete |
+| EXT-03 | Phase 2 | Complete |
 | INST-01 | Phase 1 | Pending |
 | INST-02 | Phase 1 | Pending |
-| INST-03 | Phase 2 | Pending |
+| INST-03 | Phase 2 | Complete |
 | INST-04 | Phase 1 | Complete |
 | INST-05 | Phase 1 | Complete |
 | INST-06 | Phase 1 | Complete |
