@@ -1,8 +1,9 @@
 # Roadmap: torch_butterfly Build Modernization
 
-## Overview
+## Milestones
 
-Modernize torch_butterfly from a broken setup.py-only build to a pyproject.toml-based package that installs cleanly with `uv pip install .` (and pip). Phase 1 creates the entire build system foundation including CUDA compatibility fixes. Phase 2 fixes runtime extension loading for editable installs and modernizes deprecated C++ APIs. Two phases because the work splits cleanly at a build-time vs. runtime boundary.
+- v1.0 Build System Modernization - Phases 1-2 (shipped 2026-04-02)
+- v1.1 Repository Cleanup - Phase 3 (in progress)
 
 ## Phases
 
@@ -12,10 +13,22 @@ Modernize torch_butterfly from a broken setup.py-only build to a pyproject.toml-
 
 Decimal phases appear between their surrounding integers in numeric order.
 
+<details>
+<summary>v1.0 Build System Modernization (Phases 1-2) - SHIPPED 2026-04-02</summary>
+
 - [x] **Phase 1: Build System Foundation** - pyproject.toml, PEP 621 metadata, CUDA arch fix, and working non-editable install (completed 2026-04-02)
-- [ ] **Phase 2: Extension Loading and Editable Installs** - Fix runtime .so discovery, modernize C++ registration, enable editable installs
+- [x] **Phase 2: Extension Loading and Editable Installs** - Fix runtime .so discovery, modernize C++ registration, enable editable installs (completed 2026-04-02)
+
+</details>
+
+### v1.1 Repository Cleanup
+
+- [ ] **Phase 3: Strip and Verify** - Remove all legacy code, experiments, and dead assets; verify tests pass
 
 ## Phase Details
+
+<details>
+<summary>v1.0 Build System Modernization (Phases 1-2) - SHIPPED 2026-04-02</summary>
 
 ### Phase 1: Build System Foundation
 **Goal**: Users can install torch_butterfly from source with `uv pip install .` or `pip install .` and get a working package with CUDA support
@@ -30,7 +43,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Plans**: 1 plan
 
 Plans:
-- [x] 01-01-PLAN.md — pyproject.toml, setup.py shim, MANIFEST.in, CUDA arch fix
+- [x] 01-01-PLAN.md -- pyproject.toml, setup.py shim, MANIFEST.in, CUDA arch fix
 
 ### Phase 2: Extension Loading and Editable Installs
 **Goal**: Editable installs work reliably and the C++ extension loading mechanism is robust across install modes
@@ -43,14 +56,28 @@ Plans:
 **Plans**: 1 plan
 
 Plans:
-- [x] 02-01-PLAN.md — Fix extension loading, modernize version.cpp, soften CUDA check
+- [x] 02-01-PLAN.md -- Fix extension loading, modernize version.cpp, soften CUDA check
+
+</details>
+
+### Phase 3: Strip and Verify
+**Goal**: Repository contains only the core torch_butterfly library, build files, and tests -- all legacy and experiment code removed
+**Depends on**: Phase 2
+**Requirements**: LEGACY-01, LEGACY-02, LEGACY-03, LEGACY-04, EXP-01, EXP-02, EXP-03, EXP-04, CLEAN-01, CLEAN-02, CLEAN-03, CLEAN-04
+**Success Criteria** (what must be TRUE):
+  1. The directories `butterfly/`, `tests_old/`, `learning_transforms/`, `cnn/`, `convolution/`, `transformer/`, `gumbel-sinkhorn/`, and `data/` do not exist in the repository
+  2. The files `ray_template.sh` and `.gitmodules` do not exist, and the `fairseq/` submodule is fully removed
+  3. `build/` and `torch_butterfly.egg-info/` are listed in `.gitignore` and not tracked by git
+  4. `pytest tests/` passes with all tests green after all removals
+**Plans**: TBD
 
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 1 -> 2
+Phases execute in numeric order: 1 -> 2 -> 3
 
-| Phase | Plans Complete | Status | Completed |
-|-------|----------------|--------|-----------|
-| 1. Build System Foundation | 1/1 | Complete   | 2026-04-02 |
-| 2. Extension Loading and Editable Installs | 0/1 | Not started | - |
+| Phase | Milestone | Plans Complete | Status | Completed |
+|-------|-----------|----------------|--------|-----------|
+| 1. Build System Foundation | v1.0 | 1/1 | Complete | 2026-04-02 |
+| 2. Extension Loading | v1.0 | 1/1 | Complete | 2026-04-02 |
+| 3. Strip and Verify | v1.1 | 0/? | Not started | - |

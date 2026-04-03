@@ -103,24 +103,24 @@
 | INST-04 | Phase 1 | Complete |
 | INST-05 | Phase 1 | Complete |
 | INST-06 | Phase 1 | Complete |
-| LEGACY-01 | — | Pending |
-| LEGACY-02 | — | Pending |
-| LEGACY-03 | — | Pending |
-| LEGACY-04 | — | Pending |
-| EXP-01 | — | Pending |
-| EXP-02 | — | Pending |
-| EXP-03 | — | Pending |
-| EXP-04 | — | Pending |
-| CLEAN-01 | — | Pending |
-| CLEAN-02 | — | Pending |
-| CLEAN-03 | — | Pending |
-| CLEAN-04 | — | Pending |
+| LEGACY-01 | Phase 3 | Pending |
+| LEGACY-02 | Phase 3 | Pending |
+| LEGACY-03 | Phase 3 | Pending |
+| LEGACY-04 | Phase 3 | Pending |
+| EXP-01 | Phase 3 | Pending |
+| EXP-02 | Phase 3 | Pending |
+| EXP-03 | Phase 3 | Pending |
+| EXP-04 | Phase 3 | Pending |
+| CLEAN-01 | Phase 3 | Pending |
+| CLEAN-02 | Phase 3 | Pending |
+| CLEAN-03 | Phase 3 | Pending |
+| CLEAN-04 | Phase 3 | Pending |
 
 **Coverage:**
 - v1.0 requirements: 19 total, 19 complete
-- v1.1 requirements: 12 total, 0 complete
+- v1.1 requirements: 12 total, 0 complete, 12 mapped to Phase 3
 - Unmapped: 0
 
 ---
 *Requirements defined: 2026-04-02*
-*Last updated: 2026-04-03 — v1.1 requirements added*
+*Last updated: 2026-04-03 -- v1.1 roadmap created, all requirements mapped to Phase 3*
