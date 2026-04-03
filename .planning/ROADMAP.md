@@ -69,7 +69,11 @@ Plans:
   2. The files `ray_template.sh` and `.gitmodules` do not exist, and the `fairseq/` submodule is fully removed
   3. `build/` and `torch_butterfly.egg-info/` are listed in `.gitignore` and not tracked by git
   4. `pytest tests/` passes with all tests green after all removals
-**Plans**: TBD
+**Plans**: 2 plans
+
+Plans:
+- [ ] 03-01-PLAN.md -- Remove legacy dirs, experiment dirs, submodule, and dead files
+- [ ] 03-02-PLAN.md -- Clean .gitignore, modernize README, verify tests pass
 
 ## Progress
 
@@ -80,4 +84,4 @@ Phases execute in numeric order: 1 -> 2 -> 3
 |-------|-----------|----------------|--------|-----------|
 | 1. Build System Foundation | v1.0 | 1/1 | Complete | 2026-04-02 |
 | 2. Extension Loading | v1.0 | 1/1 | Complete | 2026-04-02 |
-| 3. Strip and Verify | v1.1 | 0/? | Not started | - |
+| 3. Strip and Verify | v1.1 | 0/2 | Not started | - |
