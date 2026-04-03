@@ -56,8 +56,8 @@
 
 - [x] **CLEAN-01**: Remove `data/` directory (dataset files)
 - [x] **CLEAN-02**: Remove `ray_template.sh`
-- [ ] **CLEAN-03**: Remove `build/` and `torch_butterfly.egg-info/` from tracking and add to `.gitignore`
-- [ ] **CLEAN-04**: All existing tests in `tests/` pass after cleanup
+- [x] **CLEAN-03**: Remove `build/` and `torch_butterfly.egg-info/` from tracking and add to `.gitignore`
+- [x] **CLEAN-04**: All existing tests in `tests/` pass after cleanup
 
 ## Future Requirements
 
@@ -113,8 +113,8 @@
 | EXP-04 | Phase 3 | Complete |
 | CLEAN-01 | Phase 3 | Complete |
 | CLEAN-02 | Phase 3 | Complete |
-| CLEAN-03 | Phase 3 | Pending |
-| CLEAN-04 | Phase 3 | Pending |
+| CLEAN-03 | Phase 3 | Complete |
+| CLEAN-04 | Phase 3 | Complete |
 
 **Coverage:**
 - v1.0 requirements: 19 total, 19 complete

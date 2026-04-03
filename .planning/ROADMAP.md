@@ -73,7 +73,7 @@ Plans:
 
 Plans:
 - [x] 03-01-PLAN.md -- Remove legacy dirs, experiment dirs, submodule, and dead files
-- [ ] 03-02-PLAN.md -- Clean .gitignore, modernize README, verify tests pass
+- [x] 03-02-PLAN.md -- Clean .gitignore, modernize README, verify tests pass
 
 ## Progress
 
