@@ -1,66 +1,88 @@
-Code to accompany the papers [Learning Fast Algorithms for Linear Transforms
-Using Butterfly Factorizations](https://arxiv.org/abs/1903.05895) and [Kaleidoscope: An Efficient, Learnable Representation For All Structured Linear Maps](https://openreview.net/forum?id=BkgrBgSYDS).
+# torch_butterfly
+
+PyTorch implementation of butterfly matrices for efficient structured linear transforms, from the papers [Learning Fast Algorithms for Linear Transforms Using Butterfly Factorizations](https://arxiv.org/abs/1903.05895) and [Kaleidoscope: An Efficient, Learnable Representation For All Structured Linear Maps](https://openreview.net/forum?id=BkgrBgSYDS).
+
+## What is this?
+
+Butterfly matrices are a class of structured matrices that can represent many fast linear transforms -- FFT, inverse FFT, discrete cosine transform (DCT), discrete sine transform (DST), Hadamard transform, circulant and Toeplitz matrix multiplications, and convolutions -- using O(N log N) parameters instead of O(N^2). This library provides GPU-accelerated butterfly matrix multiplication via custom C++/CUDA kernels, wrapped in familiar `torch.nn.Module` interfaces that serve as drop-in replacements for `nn.Linear`.
 
 ## Requirements
-python>=3.6  
-pytorch>=1.8  
-numpy  
-scipy
 
-# Installing the fast CUDA implementation of butterfly multiply:
+- Python >= 3.10
+- PyTorch >= 2.0
+- numpy
+- A C++ compiler supporting C++14 (for building extensions)
+- CUDA toolkit (optional, for GPU acceleration)
 
-To install:
-```
-python setup.py install
-```
-That is, use the `setup.py` file in this root directory.
+## Installation
 
-An example of creating a conda environment and then installing the CUDA
-butterfly multiply (h/t Nir Ailon):
-```
-conda create --name butterfly python=3.8 scipy pytorch=1.8.1 cudatoolkit=11.0 -c pytorch
-conda activate butterfly
-python setup.py install
+**With uv (recommended):**
+
+```bash
+uv pip install .
 ```
 
-# Usage
+**With pip:**
 
-2020-08-03: The new interface to butterfly C++/CUDA code is in `csrc` and
-`torch_butterfly`.
-It is tested in `tests/test_butterfly.py` (which also shows example usage).
-
-
-The file `torch_butterfly/special.py` shows how to construct butterfly matrices
-that performs FFT, inverse FFT, circulant matrix multiplication,
-Hadamard transform, and torch.nn.Conv1d with circular padding. The tests in
-`tests/test_special.py` show that these butterfly matrices exactly perform
-those operations.
-
-## Old interface
-
-Note: this interface is being rewritten. Only use this if you need some feature
-that's not supported in the new interface.
-
-* The module `Butterfly` in `butterfly/butterfly.py` can be used as a drop-in
-replacement for a `nn.Linear` layer. The files in `butterfly` directory are all
-that are needed for this use.
-
-The butterfly multiplication is written in C++ and CUDA as PyTorch extension.
-To install it:
+```bash
+pip install .
 ```
-cd butterfly/factor_multiply
-python setup.py install
-cd butterfly/factor_multiply_fast
-python setup.py install
+
+**Development install:**
+
+```bash
+uv pip install -e ".[dev]"
 ```
-Without the C++/CUDA version, butterfly multiplication is still usable, but is
-quite slow. The variable `use_extension` in `butterfly/butterfly_multiply.py`
-controls whether to use the C++/CUDA version or the pure PyTorch version.
 
-For training, we've had better results with the Adam optimizer than SGD.
+### CUDA support
 
-* The directory `learning_transforms` contains code to learn the transforms
-  as presented in the paper. This directory is presently being developed and
-  refactored.
+CUDA extensions are compiled automatically when a CUDA toolkit is detected. To override auto-detection:
 
+```bash
+FORCE_CUDA=1 uv pip install .   # Force CUDA compilation
+FORCE_CPU=1 uv pip install .    # Force CPU-only build
+```
 
+You can also set `TORCH_CUDA_ARCH_LIST` to target specific GPU architectures (e.g., `"7.0 8.0 9.0+PTX"`).
+
+## Usage
+
+The `Butterfly` module is a drop-in replacement for `nn.Linear`:
+
+```python
+from torch_butterfly import Butterfly
+
+layer = Butterfly(in_size=1024, out_size=1024)
+```
+
+The file `torch_butterfly/special.py` contains factory functions that construct butterfly matrices performing exact well-known transforms:
+
+```python
+from torch_butterfly.special import fft, ifft, dct, dst, hadamard, circulant
+```
+
+See `tests/test_special.py` for examples verifying that these butterfly matrices exactly perform the corresponding operations.
+
+## Citation
+
+If you use this codebase, please cite:
+
+```bibtex
+@inproceedings{dao2019learning,
+  title={Learning Fast Algorithms for Linear Transforms Using Butterfly Factorizations},
+  author={Dao, Tri and Gu, Albert and Eichhorn, Matthew and Rudra, Atri and R{\'e}, Christopher},
+  booktitle={International Conference on Machine Learning},
+  year={2019}
+}
+
+@inproceedings{dao2020kaleidoscope,
+  title={Kaleidoscope: An Efficient, Learnable Representation For All Structured Linear Maps},
+  author={Dao, Tri and Sohoni, Nimit and Gu, Albert and Eichhorn, Matthew and Blber, Amit and Rudra, Atri and R{\'e}, Christopher},
+  booktitle={International Conference on Learning Representations},
+  year={2020}
+}
+```
+
+## License
+
+Apache-2.0
