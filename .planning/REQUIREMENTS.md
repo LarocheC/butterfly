@@ -40,22 +40,22 @@
 
 ### Legacy Removal
 
-- [ ] **LEGACY-01**: Remove `butterfly/` package (old implementation replaced by `torch_butterfly/`)
-- [ ] **LEGACY-02**: Remove `tests_old/` directory (tests for old `butterfly/` package)
-- [ ] **LEGACY-03**: Remove `learning_transforms/` directory (Cython experiments)
-- [ ] **LEGACY-04**: Remove `fairseq/` git submodule and `.gitmodules` reference
+- [x] **LEGACY-01**: Remove `butterfly/` package (old implementation replaced by `torch_butterfly/`)
+- [x] **LEGACY-02**: Remove `tests_old/` directory (tests for old `butterfly/` package)
+- [x] **LEGACY-03**: Remove `learning_transforms/` directory (Cython experiments)
+- [x] **LEGACY-04**: Remove `fairseq/` git submodule and `.gitmodules` reference
 
 ### Experiment Removal
 
-- [ ] **EXP-01**: Remove `cnn/` directory (CIFAR/ImageNet experiment scripts)
-- [ ] **EXP-02**: Remove `convolution/` directory (Lightning/Hydra/Ray experiments)
-- [ ] **EXP-03**: Remove `transformer/` directory (dynamic conv experiments)
-- [ ] **EXP-04**: Remove `gumbel-sinkhorn/` directory (sorting network experiments)
+- [x] **EXP-01**: Remove `cnn/` directory (CIFAR/ImageNet experiment scripts)
+- [x] **EXP-02**: Remove `convolution/` directory (Lightning/Hydra/Ray experiments)
+- [x] **EXP-03**: Remove `transformer/` directory (dynamic conv experiments)
+- [x] **EXP-04**: Remove `gumbel-sinkhorn/` directory (sorting network experiments)
 
 ### Cleanup
 
-- [ ] **CLEAN-01**: Remove `data/` directory (dataset files)
-- [ ] **CLEAN-02**: Remove `ray_template.sh`
+- [x] **CLEAN-01**: Remove `data/` directory (dataset files)
+- [x] **CLEAN-02**: Remove `ray_template.sh`
 - [ ] **CLEAN-03**: Remove `build/` and `torch_butterfly.egg-info/` from tracking and add to `.gitignore`
 - [ ] **CLEAN-04**: All existing tests in `tests/` pass after cleanup
 
@@ -103,16 +103,16 @@
 | INST-04 | Phase 1 | Complete |
 | INST-05 | Phase 1 | Complete |
 | INST-06 | Phase 1 | Complete |
-| LEGACY-01 | Phase 3 | Pending |
-| LEGACY-02 | Phase 3 | Pending |
-| LEGACY-03 | Phase 3 | Pending |
-| LEGACY-04 | Phase 3 | Pending |
-| EXP-01 | Phase 3 | Pending |
-| EXP-02 | Phase 3 | Pending |
-| EXP-03 | Phase 3 | Pending |
-| EXP-04 | Phase 3 | Pending |
-| CLEAN-01 | Phase 3 | Pending |
-| CLEAN-02 | Phase 3 | Pending |
+| LEGACY-01 | Phase 3 | Complete |
+| LEGACY-02 | Phase 3 | Complete |
+| LEGACY-03 | Phase 3 | Complete |
+| LEGACY-04 | Phase 3 | Complete |
+| EXP-01 | Phase 3 | Complete |
+| EXP-02 | Phase 3 | Complete |
+| EXP-03 | Phase 3 | Complete |
+| EXP-04 | Phase 3 | Complete |
+| CLEAN-01 | Phase 3 | Complete |
+| CLEAN-02 | Phase 3 | Complete |
 | CLEAN-03 | Phase 3 | Pending |
 | CLEAN-04 | Phase 3 | Pending |
 
