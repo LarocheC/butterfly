@@ -1,9 +1,9 @@
-# Requirements: torch_butterfly Build Modernization
+# Requirements: torch_butterfly
 
 **Defined:** 2026-04-02
 **Core Value:** A single `uv pip install .` that just works — with CUDA support when available
 
-## v1 Requirements
+## v1.0 Requirements (Complete)
 
 ### Build System
 
@@ -29,14 +29,37 @@
 
 ### Install Experience
 
-- [ ] **INST-01**: `uv pip install .` works from source checkout (non-editable)
-- [ ] **INST-02**: `pip install .` works from source checkout (non-editable)
+- [x] **INST-01**: `uv pip install .` works from source checkout (non-editable)
+- [x] **INST-02**: `pip install .` works from source checkout (non-editable)
 - [x] **INST-03**: `uv pip install -e .` works for development (editable)
 - [x] **INST-04**: Install works without conda — pure pip/uv workflow
 - [x] **INST-05**: Python >=3.10, <4 enforced in metadata
 - [x] **INST-06**: PyTorch >=2.0 declared as runtime dependency
 
-## v2 Requirements
+## v1.1 Requirements
+
+### Legacy Removal
+
+- [ ] **LEGACY-01**: Remove `butterfly/` package (old implementation replaced by `torch_butterfly/`)
+- [ ] **LEGACY-02**: Remove `tests_old/` directory (tests for old `butterfly/` package)
+- [ ] **LEGACY-03**: Remove `learning_transforms/` directory (Cython experiments)
+- [ ] **LEGACY-04**: Remove `fairseq/` git submodule and `.gitmodules` reference
+
+### Experiment Removal
+
+- [ ] **EXP-01**: Remove `cnn/` directory (CIFAR/ImageNet experiment scripts)
+- [ ] **EXP-02**: Remove `convolution/` directory (Lightning/Hydra/Ray experiments)
+- [ ] **EXP-03**: Remove `transformer/` directory (dynamic conv experiments)
+- [ ] **EXP-04**: Remove `gumbel-sinkhorn/` directory (sorting network experiments)
+
+### Cleanup
+
+- [ ] **CLEAN-01**: Remove `data/` directory (dataset files)
+- [ ] **CLEAN-02**: Remove `ray_template.sh`
+- [ ] **CLEAN-03**: Remove `build/` and `torch_butterfly.egg-info/` from tracking and add to `.gitignore`
+- [ ] **CLEAN-04**: All existing tests in `tests/` pass after cleanup
+
+## Future Requirements
 
 ### Distribution
 
@@ -54,12 +77,8 @@
 | Feature | Reason |
 |---------|--------|
 | Pre-compiled wheel distribution | Library value unproven, packaging effort too high |
-| Legacy butterfly/ package modernization | Focus on torch_butterfly/ only |
-| Experiment directory updates (cnn/, convolution/, etc.) | Not part of core package |
+| Rewriting or updating experiment code | Removing, not fixing |
 | C++/CUDA kernel code changes | Only touching build plumbing |
-| Version single-sourcing / bump from 0.0.0 | Nice-to-have, not core to install fix |
-| C++ rebuild workflow docs | Can be added later |
-| UV-specific documentation | Can be added later |
 
 ## Traceability
 
@@ -78,18 +97,30 @@
 | EXT-01 | Phase 2 | Complete |
 | EXT-02 | Phase 2 | Complete |
 | EXT-03 | Phase 2 | Complete |
-| INST-01 | Phase 1 | Pending |
-| INST-02 | Phase 1 | Pending |
+| INST-01 | Phase 1 | Complete |
+| INST-02 | Phase 1 | Complete |
 | INST-03 | Phase 2 | Complete |
 | INST-04 | Phase 1 | Complete |
 | INST-05 | Phase 1 | Complete |
 | INST-06 | Phase 1 | Complete |
+| LEGACY-01 | — | Pending |
+| LEGACY-02 | — | Pending |
+| LEGACY-03 | — | Pending |
+| LEGACY-04 | — | Pending |
+| EXP-01 | — | Pending |
+| EXP-02 | — | Pending |
+| EXP-03 | — | Pending |
+| EXP-04 | — | Pending |
+| CLEAN-01 | — | Pending |
+| CLEAN-02 | — | Pending |
+| CLEAN-03 | — | Pending |
+| CLEAN-04 | — | Pending |
 
 **Coverage:**
-- v1 requirements: 19 total
-- Mapped to phases: 19
+- v1.0 requirements: 19 total, 19 complete
+- v1.1 requirements: 12 total, 0 complete
 - Unmapped: 0
 
 ---
 *Requirements defined: 2026-04-02*
-*Last updated: 2026-04-02 after initial definition*
+*Last updated: 2026-04-03 — v1.1 requirements added*
