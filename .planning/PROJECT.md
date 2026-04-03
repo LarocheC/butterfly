@@ -30,18 +30,28 @@ A single `uv pip install .` (or `uv pip install -e .`) that just works — with 
 
 ### Active
 
-(None — v1.0 complete)
+(See REQUIREMENTS.md for v1.1 requirements)
 
 ### Out of Scope
 
 - Pre-compiled wheel distribution — library value unproven
-- Legacy butterfly/ package modernization — focus on torch_butterfly/ only
-- Experiment directory updates — not part of core package
 - C++/CUDA kernel code changes — only build plumbing
+- Rewriting or updating experiment code — removing, not fixing
+
+## Current Milestone: v1.1 Repository Cleanup
+
+**Goal:** Strip the repo down to the core `torch_butterfly` library, removing all legacy and experiment code to prepare for CI/CD pipeline publishing.
+
+**Target features:**
+- Remove legacy `butterfly/` package and `tests_old/` (fully replaced by `torch_butterfly/`)
+- Remove experiment directories (`cnn/`, `convolution/`, `transformer/`, `learning_transforms/`, `gumbel-sinkhorn/`)
+- Remove dead assets (`fairseq/` submodule, `data/`, `ray_template.sh`)
+- Clean up build artifacts (`build/`, `torch_butterfly.egg-info/`) and add to `.gitignore`
+- Ensure the stripped repo still builds and tests pass
 
 ## Context
 
-Shipped v1.0 with 4 files changed (pyproject.toml created, setup.py rewritten, __init__.py rewritten, permutation.py scipy lazy import). requirements.txt deleted. Build system modernized from broken setup.py-only to working pyproject.toml + thin shim.
+Shipped v1.0 with 4 files changed (pyproject.toml created, setup.py rewritten, __init__.py rewritten, permutation.py scipy lazy import). requirements.txt deleted. Build system modernized from broken setup.py-only to working pyproject.toml + thin shim. Repo heading to CI/CD pipeline for internal company package publishing.
 
 ## Constraints
 
@@ -65,5 +75,22 @@ Shipped v1.0 with 4 files changed (pyproject.toml created, setup.py rewritten, _
 | Downgrade CUDA check to warning | Prevents crash on version mismatch | ✓ Good |
 | setuptools>=64 (not >=77) | License table format compatible with older setuptools | ✓ Good |
 
+## Evolution
+
+This document evolves at phase transitions and milestone boundaries.
+
+**After each phase transition** (via `/gsd:transition`):
+1. Requirements invalidated? → Move to Out of Scope with reason
+2. Requirements validated? → Move to Validated with phase reference
+3. New requirements emerged? → Add to Active
+4. Decisions to log? → Add to Key Decisions
+5. "What This Is" still accurate? → Update if drifted
+
+**After each milestone** (via `/gsd:complete-milestone`):
+1. Full review of all sections
+2. Core Value check — still the right priority?
+3. Audit Out of Scope — reasons still valid?
+4. Update Context with current state
+
 ---
-*Last updated: 2026-04-02 after v1.0 milestone*
+*Last updated: 2026-04-03 — v1.1 milestone started*

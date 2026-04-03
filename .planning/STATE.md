@@ -1,16 +1,16 @@
 ---
 gsd_state_version: 1.0
-milestone: v1.0
-milestone_name: milestone
-status: verifying
-stopped_at: Completed 02-01-PLAN.md
-last_updated: "2026-04-02T21:02:50.002Z"
-last_activity: 2026-04-02
+milestone: v1.1
+milestone_name: Repository Cleanup
+status: planning
+stopped_at: null
+last_updated: "2026-04-03"
+last_activity: 2026-04-03
 progress:
-  total_phases: 2
-  completed_phases: 2
-  total_plans: 4
-  completed_plans: 4
+  total_phases: 0
+  completed_phases: 0
+  total_plans: 0
+  completed_plans: 0
   percent: 0
 ---
 
@@ -18,17 +18,17 @@ progress:
 
 ## Project Reference
 
-See: .planning/PROJECT.md (updated 2026-04-02)
+See: .planning/PROJECT.md (updated 2026-04-03)
 
 **Core value:** A single `uv pip install .` that just works -- with CUDA support when available
-**Current focus:** Phase 02 — extension-loading-and-editable-installs
+**Current focus:** Defining requirements for v1.1 Repository Cleanup
 
 ## Current Position
 
-Phase: 02
-Plan: Not started
-Status: Phase complete — ready for verification
-Last activity: 2026-04-02
+Phase: Not started (defining requirements)
+Plan: —
+Status: Defining requirements
+Last activity: 2026-04-03 — Milestone v1.1 started
 
 Progress: [░░░░░░░░░░] 0%
 
@@ -40,21 +40,6 @@ Progress: [░░░░░░░░░░] 0%
 - Average duration: -
 - Total execution time: 0 hours
 
-**By Phase:**
-
-| Phase | Plans | Total | Avg/Plan |
-|-------|-------|-------|----------|
-| - | - | - | - |
-
-**Recent Trend:**
-
-- Last 5 plans: -
-- Trend: -
-
-*Updated after each plan completion*
-| Phase 01 P01 | 2min | 4 tasks | 4 files |
-| Phase 02 P01 | 1min | 2 tasks | 3 files |
-
 ## Accumulated Context
 
 ### Decisions
@@ -62,13 +47,8 @@ Progress: [░░░░░░░░░░] 0%
 Decisions are logged in PROJECT.md Key Decisions table.
 Recent decisions affecting current work:
 
-- [Roadmap]: Two-phase structure -- Phase 1 covers all build-system and CUDA work, Phase 2 covers extension loading and editable installs
-- [Roadmap]: Research Phase 3 (docs/DX) has no v1 requirements, deferred
-- [Phase 01]: CUDA arch default 7.0 8.0 9.0+PTX with TORCH_CUDA_ARCH_LIST env var override
-- [Phase 01]: torch>=2.0 in build-system.requires for PEP 517 build isolation (Strategy A)
-- [Phase 01]: Kept no_python_abi_suffix=True pending Phase 2 __init__.py rework
-- [Phase 02]: Glob-based .so discovery with platform-aware suffixes for cross-platform extension loading
-- [Phase 02]: CUDA version mismatch downgraded from RuntimeError to UserWarning
+- [v1.0]: Two-phase build modernization shipped successfully
+- [v1.1]: Strip repo to core library only, prepare for CI/CD publishing
 
 ### Pending Todos
 
@@ -76,10 +56,10 @@ None yet.
 
 ### Blockers/Concerns
 
-- Build isolation may download CPU-only torch from PyPI (research pitfall #1) -- address during Phase 1 planning
+None.
 
 ## Session Continuity
 
-Last session: 2026-04-02T20:20:20.410Z
-Stopped at: Completed 02-01-PLAN.md
+Last session: 2026-04-03
+Stopped at: Milestone v1.1 initialized
 Resume file: None
