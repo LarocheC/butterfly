@@ -27,10 +27,15 @@ A single `uv pip install .` (or `uv pip install -e .`) that just works — with 
 - ✓ Glob-based extension loading replacing PathFinder — v1.0
 - ✓ RegisterOperators migrated to TORCH_LIBRARY_FRAGMENT — v1.0
 - ✓ CUDA version check downgraded to warning — v1.0
+- ✓ Legacy butterfly/ package removed — v1.1
+- ✓ Experiment directories removed (cnn/, convolution/, transformer/, learning_transforms/, gumbel-sinkhorn/) — v1.1
+- ✓ Dead assets removed (fairseq submodule, data/, ray_template.sh) — v1.1
+- ✓ Build artifacts cleaned from tracking, .gitignore updated — v1.1
+- ✓ README.md modernized for Python 3.10+, PyTorch 2.x, uv/pip — v1.1
 
 ### Active
 
-(See REQUIREMENTS.md for v1.1 requirements)
+(None — v1.1 complete)
 
 ### Out of Scope
 
@@ -51,7 +56,7 @@ A single `uv pip install .` (or `uv pip install -e .`) that just works — with 
 
 ## Context
 
-Shipped v1.0 with 4 files changed (pyproject.toml created, setup.py rewritten, __init__.py rewritten, permutation.py scipy lazy import). requirements.txt deleted. Build system modernized from broken setup.py-only to working pyproject.toml + thin shim. Repo heading to CI/CD pipeline for internal company package publishing.
+Shipped v1.0 (build modernization) and v1.1 (repo cleanup). Repo now contains only core library: `torch_butterfly/`, `csrc/`, `tests/`, build files. All legacy code, experiments, and dead assets removed. README modernized. Ready for CI/CD pipeline integration.
 
 ## Constraints
 
@@ -93,4 +98,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-04-03 — v1.1 milestone started*
+*Last updated: 2026-04-03 — Phase 3 complete, v1.1 milestone done*
